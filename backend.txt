@@ -1,0 +1,2 @@
+npm init -y
+npm i express jsonwebtoken bcrypt body-parser dotenv mongoose joi cors
