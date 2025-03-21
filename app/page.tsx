@@ -1,8 +1,10 @@
-import Image from "next/image";
+import { Button } from "@/components/ui/button"
+
 
 export default function Home() {
   return (
     
-    <p className="text-2xl"> nest auth</p>
+    
+    <Button size='sm' >click me </Button>
   );
 }
