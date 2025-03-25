@@ -7,7 +7,7 @@ const font = Poppins({
 })
 export default function Home() {
   return (
-    <main className="flex justify-center items-center min-h-screen bg-gradient-to-r from-blue-500  to-pink-500">
+    <main className="flex justify-center items-center min-h-screen bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
       <div className="space-y-6 text-center">
         <h1 className={cn("text-white text-6xl font-bold drop-shadow-md",font.className)}>Auth</h1>
         <p className="text-white text-lg">A simple authentication server</p>
