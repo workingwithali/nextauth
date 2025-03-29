@@ -22,7 +22,7 @@ export const CardWrapper = ({
     showsocail
 }:CardWrapperProps)=>{
     return (
-        <Card className="w-[400] shadow-md">
+        <Card className="w-[400px] shadow-md">
             {children}
         </Card>
     );
