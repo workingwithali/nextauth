@@ -1,9 +1,9 @@
 import { LoginButton } from "@/components/ui/auth/login-button";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Baloo_2 } from "next/font/google";
-const font = Baloo_2({
-  subsets: ["devanagari"],
+import { Poppins } from "next/font/google";
+const font = Poppins({
+  subsets: ["latin"],
   weight: ["600"]
 })
 export default function Home() {
