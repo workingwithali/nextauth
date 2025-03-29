@@ -6,9 +6,13 @@ const font = Poppins({
     weight: ["600"]
 })
 
-const interface HeaderProps{
-    lable:string;
+interface HeaderProps{
+    label:string;
 };
-export const Header = ()=>{
-    
+export const Header = ({
+    label
+}:HeaderProps)=>{
+    return (
+        <div className=""></div>
+    )
 }
