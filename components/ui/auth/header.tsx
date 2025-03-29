@@ -13,6 +13,13 @@ export const Header = ({
     label
 }:HeaderProps)=>{
     return (
-        <div className=""></div>
+        <div className="w-full flex flex-col justify-center items-center gap-y-4">
+            <h1 className={cn("text-3xl font-semibold",font.className)}>
+                Auth
+            </h1>
+            <p className="text-muted-foreground tex-sm">
+                {label}
+            </p>
+        </div>
     )
 }
