@@ -7,5 +7,8 @@ const font = Poppins({
 })
 
 const interface HeaderProps{
-    lable
+    lable:string;
+};
+export const Header = ()=>{
+    
 }
