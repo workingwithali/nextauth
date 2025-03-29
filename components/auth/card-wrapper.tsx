@@ -1,18 +1,19 @@
 "use client"
 
-import { 
+import { Header } from "@/components/auth/header";
+import {
     Card,
     CardContent,
-    CardHeader,
-    CardFooter
- } from "../card";
-import { Header } from "./header";
+    CardFooter,
+    CardHeader
+} from "../ui/card";
+import { Social } from "@/components/auth/Social";
 
-interface CardWrapperProps{
+interface CardWrapperProps {
     children: React.ReactNode;
-    headerLable :string;
+    headerLable: string;
     backButtonLable: string;
-    backButtonHref : string;
+    backButtonHref: string;
     showsocail?: boolean;
 }
 export const CardWrapper = ({
@@ -21,7 +22,7 @@ export const CardWrapper = ({
     backButtonLable,
     backButtonHref,
     showsocial
-}:CardWrapperProps)=>{
+}: CardWrapperProps) => {
     return (
         <Card className="w-[400px] shadow-md">
             <CardHeader>
@@ -30,9 +31,9 @@ export const CardWrapper = ({
             <CardContent>
                 {children}
             </CardContent>
-            {showsocial&&(
+            {showsocial && (
                 <CardFooter>
-                    
+                    <Social/>
                 </CardFooter>
             )
             }
