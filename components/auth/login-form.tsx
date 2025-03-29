@@ -5,10 +5,10 @@ export const LoginForm = () => {
   return (
     
     <CardWrapper
-      headerLable="welcome Back"
-      backButtonLable="Don't have account?"
+      headerLabel="welcome Back"
+      backButtonLabel="Don't have account?"
       backButtonHref="/auth/register"
-      showsocail
+      showsocial
     >
       login
     </CardWrapper>

@@ -1,5 +1,6 @@
 "use client"
 
+import { Social } from "@/components/auth/Social";
 import { Header } from "@/components/auth/header";
 import {
     Card,
@@ -7,26 +8,26 @@ import {
     CardFooter,
     CardHeader
 } from "../ui/card";
-import { Social } from "@/components/auth/Social";
+import { BackButton } from "./back-button";
 
 interface CardWrapperProps {
     children: React.ReactNode;
-    headerLable: string;
-    backButtonLable: string;
+    headerLabel: string;
+    backButtonLabel: string;
     backButtonHref: string;
-    showsocail?: boolean;
+    showsocial?: boolean;
 }
 export const CardWrapper = ({
     children,
-    headerLable,
-    backButtonLable,
+    headerLabel,
+    backButtonLabel,
     backButtonHref,
     showsocial
 }: CardWrapperProps) => {
     return (
-        <Card className="w-[400px] shadow-md">
+        <Card className="w-full max-w-md shadow-md">
             <CardHeader>
-                <Header label={headerLable} />
+                <Header label={headerLabel} />
             </CardHeader>
             <CardContent>
                 {children}
@@ -37,6 +38,12 @@ export const CardWrapper = ({
                 </CardFooter>
             )
             }
+            <CardFooter>
+                <BackButton
+                    label={backButtonLabel}
+                    herf={backButtonHref}
+                />
+            </CardFooter>
         </Card>
     );
 }
