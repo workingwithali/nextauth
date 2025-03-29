@@ -6,6 +6,7 @@ import {
     CardHeader,
     CardFooter
  } from "../card";
+import { Header } from "./header";
 
 interface CardWrapperProps{
     children: React.ReactNode;
@@ -23,6 +24,9 @@ export const CardWrapper = ({
 }:CardWrapperProps)=>{
     return (
         <Card className="w-[400px] shadow-md">
+            <CardContent>
+                <Header label={headerLable} />
+            </CardContent>
             {children}
         </Card>
     );
