@@ -24,10 +24,12 @@ export const CardWrapper = ({
 }:CardWrapperProps)=>{
     return (
         <Card className="w-[400px] shadow-md">
-            <CardContent>
+            <CardHeader>
                 <Header label={headerLable} />
+            </CardHeader>
+            <CardContent>
+                {children}
             </CardContent>
-            {children}
         </Card>
     );
 }
