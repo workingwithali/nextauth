@@ -1,4 +1,7 @@
 "use client"
+
+import { Card } from "../card";
+
 interface CardWrapperProps{
     children: React.ReactNode;
     headerLable :string;
@@ -6,4 +9,16 @@ interface CardWrapperProps{
     backButtonHref : string;
     showsocail?: boolean;
 }
-export 
+export const CardWrapper = ({
+    children,
+    headerLable,
+    backButtonLable,
+    backButtonHref,
+    showsocail
+}:CardWrapperProps)=>{
+    return (
+        <Card>
+            
+        </Card>
+    )
+}
