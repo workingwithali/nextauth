@@ -4,4 +4,6 @@ interface CardWrapperProps{
     headerLable :string;
     backButtonLable: string;
     backButtonHref : string;
+    showsocail?: boolean;
 }
+export 
