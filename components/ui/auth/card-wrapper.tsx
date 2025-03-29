@@ -1,6 +1,11 @@
 "use client"
 
-import { Card } from "../card";
+import { 
+    Card,
+    CardContent,
+    CardHeader,
+    CardFooter
+ } from "../card";
 
 interface CardWrapperProps{
     children: React.ReactNode;
@@ -17,8 +22,8 @@ export const CardWrapper = ({
     showsocail
 }:CardWrapperProps)=>{
     return (
-        <Card>
-            
+        <Card className="w-[400] shadow-md">
+            {children}
         </Card>
-    )
+    );
 }

@@ -1,10 +1,12 @@
+import { CardWrapper } from "./card-wrapper"
 
 
 export const LoginForm = () => {
   return (
-    <div>
+    
+    <CardWrapper>
       login
-    </div>
+    </CardWrapper>
   )
 }
 
