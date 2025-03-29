@@ -1,6 +1,6 @@
 
 
-export const loginForm = () => {
+export const LoginForm = () => {
   return (
     <div>
       login
