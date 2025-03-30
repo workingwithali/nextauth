@@ -12,6 +12,8 @@ import {
   FormLabel,
   FormMessage
 } from "@/components/ui/form"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 
 
 export const LoginForm = () => {
@@ -32,7 +34,54 @@ export const LoginForm = () => {
       backButtonHref="/auth/register"
       showsocial
     >
-      login
+      <Form {...form}>
+        <form 
+          onSubmit={form.handleSubmit(()=>{})}
+          className="space-y-6"
+        >
+          <div className="space-y-4">
+            <FormField
+              control={form.control}
+              name="email"
+              render={({field})=>(
+                <FormItem>
+                  <FormLabel>Email</FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      placeholder="ali.@example.com"
+                      type="email"
+                    />
+                  </FormControl>
+                  <FormMessage/>
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="password"
+              render={({field})=>(
+                <FormItem>
+                  <FormLabel>Password</FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      placeholder="******"
+                      type="password"
+                    />
+                  </FormControl>
+                  <FormMessage/>
+                </FormItem>
+              )}
+            />
+            
+          </div>
+
+        </form>
+      </Form>
+
+
+
     </CardWrapper>
   )
 }
