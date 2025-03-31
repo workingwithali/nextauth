@@ -14,7 +14,8 @@ import {
 } from "@/components/ui/form"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { FormError } from "../form-error"
+import { FormError } from "@/components/form-error"
+import { FormSuccess } from "@/components/form-success"
 
 
 export const LoginForm = () => {
@@ -77,6 +78,7 @@ export const LoginForm = () => {
             />
             
           </div>
+          <FormSuccess message="check"/>
           <FormError message="some thing went wrong"/>
           <Button
            type="submit"
