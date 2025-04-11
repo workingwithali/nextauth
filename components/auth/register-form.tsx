@@ -1,6 +1,6 @@
 "use client"
 import * as z from "zod"
-import { LoginSchema } from "@/schemas"
+import { RegisterSchema } from "@/schemas"
 import { CardWrapper } from "./card-wrapper"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -20,18 +20,19 @@ import { login } from "@/actions/login"
 import { useState, useTransition } from "react"
 
 
-export const LoginForm = () => {
+export const RegisterForm = () => {
   const [error,setError] = useState<string | undefined>("");
   const [success,setSuccess] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
-  const form = useForm<z.infer<typeof LoginSchema>>({
-    resolver: zodResolver(LoginSchema),
+  const form = useForm<z.infer<typeof RegisterSchema>>({
+    resolver: zodResolver(RegisterSchema),
     defaultValues: {
       email: "",
       password: "",
+      name:"",
     },
   });
-  const onSubmit = (values: z.infer<typeof LoginSchema>) => {
+  const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
     setError("");
     setSuccess("");
     startTransition(() => {
@@ -47,7 +48,7 @@ export const LoginForm = () => {
   return (
 
     <CardWrapper
-      headerLabel="welcome Back"
+      headerLabel="Creat an account"
       backButtonLabel="Don't have account?"
       backButtonHref="/auth/register"
       showsocial
@@ -70,23 +71,6 @@ export const LoginForm = () => {
                       disabled={isPending}
                       placeholder="ali.@example.com"
                       type="email"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Name</FormLabel>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      disabled={isPending}
-                      placeholder="Ali Rashid"
                     />
                   </FormControl>
                   <FormMessage />
