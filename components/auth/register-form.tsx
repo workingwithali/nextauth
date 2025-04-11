@@ -21,15 +21,15 @@ import { useState, useTransition } from "react"
 
 
 export const RegisterForm = () => {
-  const [error,setError] = useState<string | undefined>("");
-  const [success,setSuccess] = useState<string | undefined>("");
+  const [error, setError] = useState<string | undefined>("");
+  const [success, setSuccess] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
   const form = useForm<z.infer<typeof RegisterSchema>>({
     resolver: zodResolver(RegisterSchema),
     defaultValues: {
       email: "",
       password: "",
-      name:"",
+      name: "",
     },
   });
   const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
@@ -37,10 +37,10 @@ export const RegisterForm = () => {
     setSuccess("");
     startTransition(() => {
       login(values)
-      .then((data)=>{
-        setError(data.error);
-        setSuccess(data.success);
-      })
+        .then((data) => {
+          setError(data.error);
+          setSuccess(data.success);
+        })
     })
   };
 
@@ -49,8 +49,8 @@ export const RegisterForm = () => {
 
     <CardWrapper
       headerLabel="Creat an account"
-      backButtonLabel="Don't have account?"
-      backButtonHref="/auth/register"
+      backButtonLabel="Already have an account?"
+      backButtonHref="/auth/login"
       showsocial
     >
       <Form {...form}>
@@ -59,6 +59,23 @@ export const RegisterForm = () => {
           className="space-y-6"
         >
           <div className="space-y-4">
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Name</FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      disabled={isPending}
+                      placeholder="Ali Rashid"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <FormField
               control={form.control}
               name="email"
@@ -104,7 +121,7 @@ export const RegisterForm = () => {
             type="submit"
             className="w-full"
           >
-            Login
+            Creat an account
           </Button>
         </form>
       </Form>
