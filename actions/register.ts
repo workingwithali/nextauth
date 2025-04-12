@@ -12,6 +12,7 @@ export const register = async(value: z.infer<typeof RegisterSchema>)=>{
     const { email, password, name } = validatedFields.data;
     const hashedPassword = await bcrypt.hash(password,10);
     const normalizedEmail = email.trim().toLowerCase();
+    
 
     const existingUser = await db.user.findUnique({
         where: {
@@ -24,13 +25,12 @@ export const register = async(value: z.infer<typeof RegisterSchema>)=>{
     }
     
     await db.user.create({
-        data: {
-            name,
-            email: normalizedEmail,
-            password: hashedPassword,
-        },
-    });
-    
+  data: {
+    name,
+    email: normalizedEmail,
+    password: hashedPassword,
+  },
+});
     // todo verfication message later
     return {success: "User created!"};
 }
