@@ -3,6 +3,7 @@ import * as z from "zod"
 import bcrypt from "bcrypt";
 import { RegisterSchema } from "@/schemas";
 import { db } from "@/lib/db";
+import { getUserByEmail } from "@/data/user";
 
 export const register = async(value: z.infer<typeof RegisterSchema>)=>{
     const validatedFields = RegisterSchema.safeParse(value);
@@ -10,15 +11,9 @@ export const register = async(value: z.infer<typeof RegisterSchema>)=>{
         return {error :"Invalid field"};
     }
     const { email, password, name } = validatedFields.data;
-    const hashedPassword = await bcrypt.hash(password,10);
-    const normalizedEmail = email.trim().toLowerCase();
-    
+    const hashedPassword = await bcrypt.hash(password,10);    
 
-    const existingUser = await db.user.findUnique({
-        where: {
-            email: normalizedEmail,
-        },
-    });
+    const existingUser = await getUserByEmail(email);
 
     if(existingUser){
         return { error: "Email is already in use!"}
@@ -27,7 +22,7 @@ export const register = async(value: z.infer<typeof RegisterSchema>)=>{
     await db.user.create({
   data: {
     name,
-    email: normalizedEmail,
+    email,
     password: hashedPassword,
   },
 });
