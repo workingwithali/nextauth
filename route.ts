@@ -1,5 +1,5 @@
 /** 
- * arrray of routes that is accessible to the public
+ * An arrray of routes that is accessible to the public
  * there auth can't use authentication 
  * @type {string[]}
 */
@@ -8,8 +8,8 @@ export const publicRoute = [
     "/"
 ]
 /** 
- * arrray of routes that is accessible to the aut
- * there auth can't use authentication 
+ * arrray of routes that are use for authentication
+ * there route ridrect logged in use/setting
  * @type {string[]}
 */
 
@@ -24,3 +24,9 @@ export const authRoute = [
 */
 
 export const apiAuthPrefix = "/api/auth" 
+/** 
+ * Default redirect path after loggin
+ * @type {string}
+*/
+
+export const DEFAULT_LOGIN_REDIRECT = "/api/auth" 
