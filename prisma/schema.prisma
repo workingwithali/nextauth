@@ -10,6 +10,10 @@ generator client {
   provider = "prisma-client-js"
 }
 
+enum UserRole {
+  ADMIN
+  USER
+}
 
 model User {
   id            String          @id @default(cuid())
@@ -18,10 +22,12 @@ model User {
   emailVerified DateTime?
   image         String?
   password      String?
+  role          UserRole        @default(USER)
   accounts      Account[]
 }
 
 model Account {
+  id                String          @id @default(cuid())
   userId            String
   type              String
   provider          String
@@ -37,5 +43,5 @@ model Account {
  
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
  
-  @@id([provider, providerAccountId])
+  @@unique([provider, providerAccountId])
 }
