@@ -15,7 +15,8 @@ export const publicRoute = [
 
 export const authRoute = [
     "/auth/login",
-    "/auth/register"
+    "/auth/register",
+    "/auth/error"
 ]
 /** 
  * the prefix for api authentication route 
