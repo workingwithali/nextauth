@@ -23,7 +23,6 @@ export const { auth, handlers, signIn, signOut } =
         },
         events: {
             async linkAccount({ user }) {
-
                 await db.user.update({
                     where: { id: user.id },
                     data: { emailVerified: new Date() }
@@ -32,6 +31,14 @@ export const { auth, handlers, signIn, signOut } =
             }
         },
         callbacks: {
+            async signIn({ user , account }) {
+                console.log({user, account});
+                if(account?.provider !== "credentials") return true;
+                const existingUser = await getUserById(user.id);
+
+                if (!existingUser?.emailVerified) return false;
+                return true;
+            },
             async session({ session, token }) {
                 // console.log({sessiontoken: token});
                 if (token.sub && session.user) {
