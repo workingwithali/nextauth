@@ -7,20 +7,30 @@ export const newVerification = async (token: string) => {
     // Check if the token is valid
     const existingToken = await getVerificationTokenByToken(token);
     if (!existingToken) {
-        throw new Error("Invalid verification token");
+        return {error:"Token not found"};
+    }
+    // Check if the token is expired
+    const hasExpired = new Date(existingToken.expires) < new Date();
+    if (hasExpired) {
+        return {error:"Token has expired"};
     }
     
     // Get the user associated with the token
-    const existinguser = await getUserByEmail(existingToken.email);
-    if (!existinguser) {
-        throw new Error("User not found");
+    const existingUser = await getUserByEmail(existingToken.email);
+    if (!existingUser) {
+        return {error:"Email is not exist"};
     }
     
     // Update the user's verification status
     await db.user.update({
-        where: { id: user.id },
+        where: { id: existingUser.id },
         data: { emailVerified: new Date(), },
     });
     
-    return { message: "User verified successfully" };
+    // Delete the verification token
+    await db.verificationToken.delete({
+        where: { id: existingToken.id },
+    });
+    
+    return { success : "User verified successfully" };
 }
