@@ -1,8 +1,18 @@
 "use client";
 import { CardWrapper } from "@/components/auth/card-wrapper";
+import { useSearchParams } from "next/navigation";
+import { useCallback, useEffect } from "react";
 import { BeatLoader } from "react-spinners";
 
 export const NewVerificationForm = () => {
+  const token = useSearchParams().get("token");
+  const onSubmit = useCallback(() => {
+    console.log("Token received:", token);
+  }, [token]);
+  useEffect(() => { 
+      onSubmit();  
+  }, [onSubmit]);
+
   return (
 
     <CardWrapper
