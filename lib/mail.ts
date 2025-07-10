@@ -1,14 +1,14 @@
 import { Resend } from 'resend';
 
-
 const resend = new Resend(process.env.RESEND_API_KEY);
+
 export const sendVerificationEmail = async (email: string, token: string) => {
-  const verificationUrl = `https://localhost:3000/auth/new-verification?token=${token}`;
-   await resend.emails.send({
-    from: 'ailrashid2020e@gmail.com',
+  const verificationUrl = `http://localhost:3000/auth/new-verification?token=${token}`;
+
+  await resend.emails.send({
+    from: 'onboarding@resend.dev',
     to: email,
     subject: 'Verify your email',
-       html: `<p>Click <a herf=${verificationUrl} > here</a> to comirm email.</p>`
+    html: `<p>Click <a href="${verificationUrl}">here</a> to confirm your email.</p>`,
   });
-
-}
+};
