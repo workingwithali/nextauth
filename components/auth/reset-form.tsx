@@ -1,6 +1,6 @@
 "use client"
 import * as z from "zod"
-import { ResetSchema} from "@/schemas"
+import { ResetSchema } from "@/schemas"
 import { CardWrapper } from "./card-wrapper"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -16,15 +16,15 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { FormError } from "@/components/form-error"
 import { FormSuccess } from "@/components/form-success"
-import { login } from "@/actions/login"
+import { Reset } from "@/actions/reset"
 import { useState, useTransition } from "react"
 
 
 export const ResetForm = () => {
- 
 
-  const [error,setError] = useState<string | undefined>("");
-  const [success,setSuccess] = useState<string | undefined>("");
+
+  const [error, setError] = useState<string | undefined>("");
+  const [success, setSuccess] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
   const form = useForm<z.infer<typeof ResetSchema>>({
     resolver: zodResolver(ResetSchema),
@@ -36,11 +36,11 @@ export const ResetForm = () => {
     setError("");
     setSuccess("");
     startTransition(() => {
-      login(values)
-      .then((data)=>{
-        setError(data?.error);
-        setSuccess(data?.success);
-      })
+      Reset(values)
+        .then((data) => {
+          setError(data?.error);
+          setSuccess(data?.success);
+        })
     })
   };
 
@@ -76,7 +76,7 @@ export const ResetForm = () => {
                 </FormItem>
               )}
             />
-           
+
 
           </div>
           <FormSuccess message={success} />
