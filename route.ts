@@ -19,6 +19,7 @@ export const authRoute = [
     "/auth/register",
     "/auth/error",
     "/auth/reset",
+    "/auth/new-password",
 ]
 /** 
  * the prefix for api authentication route 
