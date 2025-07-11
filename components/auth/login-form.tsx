@@ -34,6 +34,7 @@ export const LoginForm = () => {
     defaultValues: {
       email: "",
       password: "",
+      code: "",
     },
   });
   const onSubmit = (values: z.infer<typeof LoginSchema>) => {
@@ -50,7 +51,7 @@ export const LoginForm = () => {
             form.reset();
             setSuccess(data.success);
           }
-          if (data?.ToFactor) {
+          if (data?.TwoFactor) {
             setShowTwoFactor(true);
           }
         })

@@ -12,7 +12,7 @@ export const generateTwoFactorToken = async (email: string) => {
     const existingToken = await getTwoFactorTokenByEmail(email);
 
     if (existingToken) {
-        const updatedToken = await db.passwordResetToken.update({
+        const updatedToken = await db.twoFactorToken.update({
             where: {
                 id: existingToken.id,
             },
@@ -24,7 +24,7 @@ export const generateTwoFactorToken = async (email: string) => {
         });
         return updatedToken;
     } else {
-        const newToken = await db.passwordResetToken.create({
+        const newToken = await db.twoFactorToken.create({
             data: {
                 email,
                 token,
