@@ -3,6 +3,7 @@ import { PrismaAdapter } from "@auth/prisma-adapter"
 import { db } from "@/lib/db"
 import authConfig from "@/auth.config"
 import { getUserById } from "@/data/user"
+import { getTwoFactorconfirmationByUserId } from "./data/two-factor-confirmation"
 
 
 declare module "next-auth" {
@@ -32,16 +33,28 @@ export const { auth, handlers, signIn, signOut } =
         },
         callbacks: {
             async signIn({ user , account }) {
-                console.log("signIn", {user, account});
-                console.log({user, account});
+  
                 if(account?.provider !== "credentials") return true;
+
                 const existingUser = await getUserById(user.id);
 
                 if (!existingUser?.emailVerified) return false;
+
+                if (existingUser?.isTwoFactorEnable) {
+                    const twoFactorConfirmation = await getTwoFactorconfirmationByUserId(existingUser.id);
+                    console.log("twoFactorConfirmation", twoFactorConfirmation);
+                    if (!twoFactorConfirmation) return false;
+
+                    await db.twoFactorConfirmation.delete({
+                        where: { id: twoFactorConfirmation.id }
+                    })
+                }
+                
+                
                 return true;
             },
             async session({ session, token }) {
-                // console.log({sessiontoken: token});
+        
                 if (token.sub && session.user) {
                     session.user.id = token.sub
                 }
