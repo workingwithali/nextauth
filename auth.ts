@@ -48,6 +48,7 @@ export const { auth, handlers, signIn, signOut } =
                     await db.twoFactorConfirmation.delete({
                         where: { id: twoFactorConfirmation.id }
                     })
+                    
                 }
                 
                 
