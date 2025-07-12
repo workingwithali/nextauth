@@ -1,10 +1,10 @@
 "use client";
 import { logout } from "@/actions/signout";
-import { useCurrentUser } from "@/hook/useCurrentUser";
+
 
 
 const SettingPage = () => {
-  const user = useCurrentUser();
+
   const onClick = () => {
     logout();
   }
