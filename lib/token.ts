@@ -7,7 +7,7 @@ import crypto from "crypto";
 
 export const generateTwoFactorToken = async (email: string) => {
     const token = crypto.randomInt(100_000,1_000_000).toString(); // 6-digit token
-    const expires = new Date(Date.now() + 60 * 60 * 1000); // 1 hour
+    const expires = new Date(Date.now() + 5 * 60 * 1000); // 1 hour
 
     const existingToken = await getTwoFactorTokenByEmail(email);
 
