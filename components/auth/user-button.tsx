@@ -1,5 +1,6 @@
 "use client";
 import { FaUser } from "react-icons/fa";
+import { ExitIcon} from "@radix-ui/react-icons";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -28,9 +29,10 @@ import { LogoutButton } from "@/components/auth/logout-button";
                         </AvatarFallback>
                     </Avatar>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent>
+                <DropdownMenuContent className="w-40" align="end">
                     <LogoutButton>
                         <DropdownMenuItem>
+                            <ExitIcon className="mr-2 w-2 h-2"/>
                             Logout
                         </DropdownMenuItem>
                     </LogoutButton>
