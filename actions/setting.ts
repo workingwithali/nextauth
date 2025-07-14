@@ -1,11 +1,12 @@
+"use server"
 import * as z from "zod";
-import { SettingSchema } from "@/schemas";
+import { settingSchema } from "@/schemas";
 import { db } from "@/lib/db";
 import { getUserById } from "@/data/user";
 import { CurrentUser } from "@/lib/auth";
 
 
-export const Setting = async (value: z.infer<typeof SettingSchema>) => {
+export const Setting = async (value: z.infer<typeof settingSchema>) => {
     const user = await CurrentUser();
     if(!user){
         return { error: "unauthorized" };
