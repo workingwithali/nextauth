@@ -14,7 +14,7 @@ const SettingPage = () => {
   const [isPending, startTransition] = useTransition();
   const onClick = () => {
     startTransition(() => {
-      Setting( { name: "rashid ali" } );
+      Setting( { name: "testsdsds" } );
     })
   }
   

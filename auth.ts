@@ -59,6 +59,12 @@ export const { auth, handlers, signIn, signOut } =
                 if (session.user) {
                     session.user.isTwoFactorEnable = token.isTwoFactorEnable as boolean;
                 }
+                if (session.user.name && session.user) {
+                    session.user.name = token.name as string;
+                }
+                if (session.user.email && session.user) {
+                    session.user.email = token.email as string;
+                }
                 return session;
             },
             async jwt({ token }) {
@@ -67,6 +73,8 @@ export const { auth, handlers, signIn, signOut } =
                 const existingUser = await getUserById(token.sub);
 
                 if (!existingUser) return token;
+                token.name = existingUser.name;
+                token.email = existingUser.email;
                 token.role = existingUser.role;
                 token.isTwoFactorEnable = existingUser.isTwoFactorEnable;
 
