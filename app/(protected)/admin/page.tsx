@@ -1,5 +1,5 @@
 // "use client";
-import { useCurrentRole } from "@/hook/useCurrentRole"
+
 import { FormSuccess } from "@/components/form-success";
 import { UserRole } from "@prisma/client";
 import { 
@@ -9,6 +9,7 @@ import {
 
  } from "@/components/ui/card";
 import { RoleGate } from "@/components/auth/role-gate";
+import { Button } from "@/components/ui/button";
 
 const Adminpage =  () => {
     
@@ -21,6 +22,18 @@ const Adminpage =  () => {
         <RoleGate allowedRoles={UserRole.ADMIN}>
           <FormSuccess message="You are an admin" />
         </RoleGate>
+        <div className="flex flex-row justify-between items-center rounded-xl broader p-3 shadow-md">
+          <p className="text-sm font-medium">
+            Admin-only API route
+          </p>
+          <Button>click to test</Button>
+        </div>
+        <div className="flex flex-row justify-between items-center rounded-xl broader p-3 shadow-md">
+          <p className="text-sm font-medium">
+            Admin-only API Server Action
+          </p>
+          <Button>click to test</Button>
+        </div>
       </CardContent>
     </Card>
     
