@@ -3,7 +3,7 @@ import * as z from "zod"
 
 export const settingSchema = z.object({
     name :z.optional(z.string()),
-    isTwoFactorEnabled :z.optional(z.boolean()),
+    isTwoFactorEnable :z.optional(z.boolean()),
     role :z.enum([UserRole.ADMIN,UserRole.USER]),
     email :z.optional(z.string()),
     password :z.optional(z.string()),

@@ -50,7 +50,8 @@ const SettingPage = () => {
       newPassword: undefined,
       name: user?.name || undefined,
       email: user?.email || undefined,
-      role: user?.role || undefined
+      role: user?.role || undefined,
+      isTwoFactorEnable: user?.isTwoFactorEnable || undefined
     },
   })
   const onSubmit = (value: z.infer<typeof settingSchema>) => {
@@ -96,45 +97,50 @@ const SettingPage = () => {
                   </FormItem>
                 )}
               />
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email</FormLabel>
-                    <FormControl>
-                      <Input placeholder="jbMw0@example.com" {...field} disabled={isPending} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Password</FormLabel>
-                    <FormControl>
-                      <Input placeholder="******" {...field} disabled={isPending} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="newPassword"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>New Password</FormLabel>
-                    <FormControl>
-                      <Input placeholder="******" {...field} disabled={isPending} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+              {user?.isOAuth === false && (
+                <>
+                  <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Email</FormLabel>
+                        <FormControl>
+                          <Input placeholder="jbMw0@example.com" {...field} disabled={isPending} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="password"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Password</FormLabel>
+                        <FormControl>
+                          <Input placeholder="******" {...field} disabled={isPending} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="newPassword"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>New Password</FormLabel>
+                        <FormControl>
+                          <Input placeholder="******" {...field} disabled={isPending} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </>
+              )}
+
               <FormField
                 control={form.control}
                 name="role"
@@ -162,28 +168,30 @@ const SettingPage = () => {
 
                 )}
               />
-              <FormField
-                control={form.control}
-                name="isTwoFactorEnabled"
-                render={({ field }) => (
-                  <FormItem className="flex flex-row justify-between items-center rounded-lg broader shadow-md p-3">
-                    <div className="space-y-0.5" >
-                      <FormLabel>Two Factor Authentication</FormLabel>
-                      <FormDescription>Enabled 2FA for your account</FormDescription>
-                    </div>
-                    <FormControl>
-                      <Switch
-                        checked={field.value}
-                        onCheckedChange={field.onChange}
-                        disabled={isPending}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
+              {user?.isOAuth === false && (
+                <FormField
+                  control={form.control}
+                  name="isTwoFactorEnable"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-row justify-between items-center rounded-lg broader shadow-md p-3">
+                      <div className="space-y-0.5" >
+                        <FormLabel>Two Factor Authentication</FormLabel>
+                        <FormDescription>Enabled 2FA for your account</FormDescription>
+                      </div>
+                      <FormControl>
+                        <Switch
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                          disabled={isPending}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
 
 
-                )}
-              />
+                  )}
+                />
+              )}
             </div>
             <FormSuccess message={success} />
             <FormError message={error} />

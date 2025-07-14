@@ -19,7 +19,7 @@ export const Setting = async (value: z.infer<typeof settingSchema>) => {
         value.email = undefined;
         value.password = undefined;
         value.newPassword = undefined;
-        value.isTwoFactorEnabled = undefined;
+        value.isTwoFactorEnable = undefined;
     };
 
     await db.user.update({
