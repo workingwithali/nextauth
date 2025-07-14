@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 
 import { FormSuccess } from "@/components/form-success";
 import { UserRole } from "@prisma/client";
@@ -10,8 +10,19 @@ import {
  } from "@/components/ui/card";
 import { RoleGate } from "@/components/auth/role-gate";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 const Adminpage =  () => {
+  const onClickApiRoute = async () => {
+    fetch("/api/admin")
+      .then((response)=>{
+        if(response.ok){
+            toast.success("Allowed Api Route");
+        }else{
+            toast.error("Forbidden Api Route");
+        }
+      })
+  }
     
   return (
     <Card className="w-[600px] ">
@@ -26,7 +37,7 @@ const Adminpage =  () => {
           <p className="text-sm font-medium">
             Admin-only API route
           </p>
-          <Button>click to test</Button>
+          <Button onClick={onClickApiRoute}>click to test</Button>
         </div>
         <div className="flex flex-row justify-between items-center rounded-xl broader p-3 shadow-md">
           <p className="text-sm font-medium">
