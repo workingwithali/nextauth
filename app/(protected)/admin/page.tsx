@@ -11,6 +11,7 @@ import {
 import { RoleGate } from "@/components/auth/role-gate";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { Admin } from "@/actions/admin";
 
 const Adminpage =  () => {
   const onClickApiRoute = async () => {
@@ -22,6 +23,20 @@ const Adminpage =  () => {
             toast.error("Forbidden Api Route");
         }
       })
+  }
+  const onClickApiServerAction =  () => {
+    Admin()
+    .then((res)=>{
+      if(res.success){
+        toast.success("Allowed Api Server Action");
+      }
+      if(res.error){
+        toast.error("Forbidden Api Server Action");
+      }
+    })
+    
+    
+    
   }
     
   return (
@@ -43,7 +58,7 @@ const Adminpage =  () => {
           <p className="text-sm font-medium">
             Admin-only API Server Action
           </p>
-          <Button>click to test</Button>
+          <Button onClick={onClickApiServerAction}>click to test</Button>
         </div>
       </CardContent>
     </Card>
