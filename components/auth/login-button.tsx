@@ -5,12 +5,15 @@ import { useRouter } from 'next/navigation';
 import {
     Dialog,
     DialogContent,
-    DialogTrigger
+    DialogTrigger,
+    DialogTitle
 } from '@/components/ui/dialog';
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+
 import { LoginForm } from '@/components/auth/login-form';
 interface LoginButtonProps {
     children: React.ReactNode;
-    mode?: "mode" | "redirect";
+    mode?: "modal" | "redirect";
     asChild?: boolean;
 }
 
@@ -28,10 +31,12 @@ export const LoginButton = ({
             <Dialog>
                 <DialogTrigger asChild={asChild}>{children}</DialogTrigger>
                 <DialogContent className='p-0 w-auto bg-transparent broader-none'>
+                    <VisuallyHidden>
+                        <DialogTitle>Login</DialogTitle>
+                    </VisuallyHidden>
                     <LoginForm />
                 </DialogContent>
             </Dialog>
-
         )
     }
 
