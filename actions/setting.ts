@@ -10,6 +10,7 @@ import { sendVerificationEmail } from "@/lib/mail";
 import bcrypt from "bcryptjs";
 
 
+
 export const Setting = async (value: z.infer<typeof settingSchema>) => {
     const user = await CurrentUser();
     if (!user) {
@@ -54,6 +55,7 @@ export const Setting = async (value: z.infer<typeof settingSchema>) => {
             ...value,
         },
     });
+    
     return { success: "setting updated" };
 
 }
