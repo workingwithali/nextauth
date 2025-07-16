@@ -13,7 +13,7 @@ import { getTwoFactorconfirmationByUserId } from "@/data/two-factor-confirmation
 
 export const login = async (
     value: z.infer<typeof LoginSchema>,
-    callbackUrl?: string
+    callbackUrl?: string | null
 ) => {
     const validatedFields = LoginSchema.safeParse(value);
     if (!validatedFields.success) {
