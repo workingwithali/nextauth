@@ -20,13 +20,13 @@ export default auth((req) => {
     const isAuthRoute = authRoute.includes(nextUrl.pathname)
 
     if (isApiAuthPrefix) {
-        return null;
+        return ;
     }
     if (isAuthRoute) {
         if (isLoggedIn) {
             return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
         }
-        return null;
+        return ;
     }
     if (!isLoggedIn && !isPublicRoute) {
         let callbackUrl = nextUrl.pathname;
@@ -39,7 +39,7 @@ export default auth((req) => {
             nextUrl
         ));
     }
-    return null;
+    return ;
 
 })
 
