@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🔐 Full-Stack Auth System with Next.js 14 & NextAuth v5 (Auth.js)
 
-## Getting Started
+This project is a complete **authentication system** built with **Next.js 14**, **NextAuth v5**, and **TypeScript**, featuring both **OAuth** and **credentials-based login**, **two-factor authentication**, **role-based access**, **email verification**, and much more.
 
-First, run the development server:
+---
+
+## 📸 Live Demo
+
+🌐 [Visit the Live App](https://nextauth-ivory-beta.vercel.app)
+
+---
+
+## 🚀 Features
+
+- ✅ **Next.js 14** with **Server Actions**
+- 🔐 **NextAuth v5 (Auth.js)**
+- 🔑 **Credentials Provider**
+- 🌐 **OAuth Providers**: Google & GitHub
+- ✉️ **Email verification**
+- 🔒 **Forgot password functionality**
+- 📱 **Two-factor authentication (2FA)**
+- 👥 **User roles**: Admin & User
+- 🧾 **Register/Login/Forgot Password** Forms
+- 🧩 **Dynamic Role-Based Rendering**
+- ⚠️ **Error Handling**
+- 🔘 **Login & Logout Buttons**
+- 🚧 **Role Gate for Admin-only access**
+- 🛂 **Custom hooks**: `useCurrentUser`, `useRole`
+- 🔐 **Secure API Routes & Server Actions**
+- 🛡️ **Settings page**:
+  - Change Email (with re-verification)
+  - Change Password (with current password confirmation)
+  - Enable/Disable 2FA
+  - Change User Role (for development)
+
+---
+
+## 🧠 Project Structure & Topics Covered
+
+| Section | Description |
+|--------|-------------|
+| **Intro & Demo** | Overview and feature walkthrough |
+| **Project Setup** | Environment setup, dependencies |
+| **Auth Pages** | Login, Register, Forgot Password, etc. |
+| **Database & Prisma** | Schema, migrations, user model |
+| **User Creation** | Securely create and validate users |
+| **Middleware** | Protect routes with Next.js middleware |
+| **Callbacks** | Customize NextAuth behavior with callbacks |
+| **OAuth Integration** | Google and GitHub login setup |
+| **Email Services** | Using Resend to send verification/reset emails |
+| **Two-Factor Auth** | Enable and verify 2FA for users |
+| **User Interface** | Reusable components and wrappers |
+| **Client/Server Examples** | Role-based content rendering |
+| **Settings Page** | User account management |
+| **Deployment** | Deploy to platforms like **Vercel** |
+
+---
+
+## ⚙️ Technologies Used
+
+- [Next.js 14](https://nextjs.org/)
+- [NextAuth.js v5](https://authjs.dev/)
+- [Prisma ORM](https://www.prisma.io/)
+- [Resend](https://resend.com/) for email service
+- [Tailwind CSS](https://tailwindcss.com/)
+- TypeScript
+- OAuth: Google & GitHub
+- PostgreSQL (can be swapped with other databases)
+
+---
+
+## 🔧 Getting Started
+
+### 1. Clone the Repository
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
