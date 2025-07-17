@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Setting } from "@/actions/setting";
-import { useState, useTransition } from "react";
+import { useState, useTransition, useEffect } from "react";
 import { settingSchema } from "@/schemas";
 import {
   Card,
@@ -38,11 +38,23 @@ import { UserRole } from "@prisma/client";
 
 
 const SettingPage = () => {
+
+
   const user = useCurrentUser();
   const { update } = useSession();
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setError('');
+      setSuccess('');
+    }, 3000); // 3 seconds
+
+    return () => clearTimeout(timer);
+  }, [error, success]); // run whenever either message changes
+
   const form = useForm<z.infer<typeof settingSchema>>({
     resolver: zodResolver(settingSchema),
     defaultValues: {
